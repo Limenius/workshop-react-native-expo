@@ -1,62 +1,33 @@
 import React, { Component } from "react";
-import {
-  View,
-  ActivityIndicator,
-  Button,
-  Text,
-  Picker,
-  Slider,
-  StyleSheet,
-  Switch,
-  TextInput,
-  Image
-} from "react-native";
-import SimpleComponent from "./components/Simple";
-import MyCounter from "./components/MyCounter";
-import { movies } from "./data";
+import { ScrollView, StyleSheet } from "react-native";
+import { movies, actors } from "./data";
+import MovieHeader from "./components/MovieHeader";
+import ListItemActor from "./components/ListItemActor";
+import MainHeader from "./components/MainHeader";
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      movie: movies.find(movie => movie.name === "Grease")
+    };
+  }
   render() {
+    const { movie } = this.state;
+    const actorName = movie.actors[0];
+    const actorImage = actors[actorName].image;
     return (
-      <View>
-        <Text>Hi there!</Text>
-      </View>
+      <ScrollView style={Styles.container}>
+        <MovieHeader movie={movie} />
+        <ListItemActor actorName={actorName} actorImage={actorImage} />
+        <MainHeader />
+      </ScrollView>
     );
   }
 }
 
-// <Button
-//   onPress={() => alert('Hi')}
-//   title="Learn More"
-//   color="#841584"
-//   accessibilityLabel="This is a sample button"
-// />
-//
-// This image is static
-// <Image style={{height: 100, width: 100}} source={require('./images/pulp-fiction.jpg')}/>
-//
-// This image comes from an uri
-// <Image style={{height: 100, width: 100}} source={{uri: 'https://lorempixel.com/100/100/cats/'}}/>
-//
-// <ActivityIndicator/>
-//
-// <Picker
-//   onValueChange={(itemValue, itemIndex) => alert(`You picked ${itemValue}`)}
-// >
-//   { movies.map(movie => (
-//     <Picker.Item key={movie.name} label={movie.name} value={movie.name} />
-//   ))}
-// </Picker>
-//
-// <Slider/>
-//
-// <Switch/>
-//
-// <TextInput
-//   defaultValue="Type here"
-//   style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-// />
-//
-// <SimpleComponent title="hola" color="red"/>
-//
-// <MyCounter/>
+const Styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+});
