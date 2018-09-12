@@ -1,31 +1,22 @@
-import React, { Component } from 'react'
+import React from "react";
 
-import {
-  Text,
-  ScrollView,
-  View,
-  Image,
-  StyleSheet
-} from 'react-native'
+import { Text, View, Image, StyleSheet } from "react-native";
 
-import Colors from '../styles/colors'
-import FontSizes from '../styles/fontSizes'
+import Colors from "../styles/colors";
+import FontSizes from "../styles/fontSizes";
 
-const ListItemActor = ({actorName, actorImage}) => (
+const ListItemActor = ({ actorName, actorImage }) => (
   <View style={Styles.listItem}>
-    <Image source={actorImage} style={Styles.itemImage}/>
-    <Text style={Styles.itemName}>
-      {actorName}
-    </Text>
+    <Image source={actorImage} style={Styles.itemImage} />
+    <Text style={Styles.itemName}>{actorName}</Text>
   </View>
-)
+);
 
 const Styles = StyleSheet.create({
   listItem: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderBottomWidth: 1,
     borderBottomColor: Colors.subtleAccent,
-
   },
   itemImage: {
     height: 84,
@@ -33,9 +24,8 @@ const Styles = StyleSheet.create({
   },
   itemName: {
     color: Colors.text,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
+});
 
-})
-
-export default ListItemActor
+export default ListItemActor;
