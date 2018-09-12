@@ -5,12 +5,16 @@ import { View, Image, Text, StyleSheet } from "react-native";
 
 export default class Actor extends Component {
   // Set an apropriate title
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.name,
+  });
 
   constructor(props) {
     super(props);
     this.state = {
       // Set actor based on navigation parameters
-      actor: actors["John Travolta"],
+      actor: actors[props.navigation.state.params.name],
+      //actor: actors['John Travolta'],
     };
   }
 
